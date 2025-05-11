@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "lib": ["ESNext"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "sourceMap": true,
+    "outDir": "./dist", // tsup handles actual output directory, this is for tsc checks
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "isolatedModules": true, // Important for tsup and Babel/SWC compatibility
+    "noEmit": true // Let tsup handle emits, tsc only for type checking via `npm run check-types`
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist", "eslint", "prettier", "**/*.config.js"]
+} 
