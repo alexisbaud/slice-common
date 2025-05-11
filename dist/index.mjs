@@ -1,6 +1,3 @@
-// src/events/auth.ts
-var AUTH_USER_REGISTERED_EVENT_NAME = "auth.user.registered";
-
 // src/helpers/formatDate.ts
 function formatDate(date, locale = "en-US", options) {
   if (!(date instanceof Date) || isNaN(date.getTime())) {
@@ -53,7 +50,6 @@ function genUUIDReadable(segments = DEFAULT_SEGMENTS, segmentLength = DEFAULT_SE
   return result;
 }
 export {
-  AUTH_USER_REGISTERED_EVENT_NAME,
   formatDate,
   genUUIDReadable,
   slugify

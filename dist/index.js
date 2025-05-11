@@ -20,15 +20,11 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.ts
 var index_exports = {};
 __export(index_exports, {
-  AUTH_USER_REGISTERED_EVENT_NAME: () => AUTH_USER_REGISTERED_EVENT_NAME,
   formatDate: () => formatDate,
   genUUIDReadable: () => genUUIDReadable,
   slugify: () => slugify
 });
 module.exports = __toCommonJS(index_exports);
-
-// src/events/auth.ts
-var AUTH_USER_REGISTERED_EVENT_NAME = "auth.user.registered";
 
 // src/helpers/formatDate.ts
 function formatDate(date, locale = "en-US", options) {
@@ -83,7 +79,6 @@ function genUUIDReadable(segments = DEFAULT_SEGMENTS, segmentLength = DEFAULT_SE
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  AUTH_USER_REGISTERED_EVENT_NAME,
   formatDate,
   genUUIDReadable,
   slugify

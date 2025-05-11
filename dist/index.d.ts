@@ -10,42 +10,25 @@ interface AuthCredentials {
  */
 interface AuthTokens {
     accessToken: string;
-    refreshToken?: string;
     expiresIn: number;
 }
-
 /**
- * Represents a user's profile information.
- * This will be managed by the user-service.
- */
-interface UserProfile {
-    id: string;
-    email: string;
-    username?: string;
-    firstName?: string;
-    lastName?: string;
-    isActive: boolean;
-    isVerified: boolean;
-    createdAt: Date;
-    updatedAt: Date;
-}
-
-/**
- * Event payload for when a new user is registered via the auth-service.
+ * Payload for the auth_user_registered event.
  * This event is published by auth-service after basic credential creation (e.g., email/password hash stored).
- * It signals other services, like user-service, to perform follow-up actions (e.g., create a user profile).
+ * It signals other services to perform follow-up actions (e.g., create a user profile).
  */
 interface AuthUserRegisteredEvent {
-    eventId: string;
-    timestamp: Date;
-    userId: string;
+    id: string;
     email: string;
+    timestamp: string;
 }
 /**
- * The name (routing key or topic) for the auth.user_registered event.
- * Format: <service>.<resource>.<action>
+ * Payload for the auth_user_deleted event.
  */
-declare const AUTH_USER_REGISTERED_EVENT_NAME = "auth.user.registered";
+interface AuthUserDeletedEvent {
+    id: string;
+    timestamp: string;
+}
 
 /**
  * Formats a Date object into a string using Intl.DateTimeFormat.
@@ -83,4 +66,4 @@ declare function slugify(text: unknown): string;
  */
 declare function genUUIDReadable(segments?: number, segmentLength?: number): string;
 
-export { AUTH_USER_REGISTERED_EVENT_NAME, type AuthCredentials, type AuthTokens, type AuthUserRegisteredEvent, type UserProfile, formatDate, genUUIDReadable, slugify };
+export { type AuthCredentials, type AuthTokens, type AuthUserDeletedEvent, type AuthUserRegisteredEvent, formatDate, genUUIDReadable, slugify };
