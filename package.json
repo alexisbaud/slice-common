@@ -1,6 +1,6 @@
 {
-  "name": "@slice/common",
-  "version": "0.1.0",
+  "name": "@alexisbaud/slice-common",
+  "version": "0.1.2",
   "description": "Shared TypeScript types, event definitions, helpers, and configs for Slice microservices.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

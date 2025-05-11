@@ -1,4 +1,4 @@
-# @slice/common
+# @alexisbaud/slice-common
 
 This package provides shared TypeScript types, event definitions, helper functions, and base ESLint/Prettier configurations for Slice microservices.
 
@@ -11,11 +11,11 @@ This package provides shared TypeScript types, event definitions, helper functio
 Install the package in your microservice project using your preferred package manager:
 
 ```bash
-npm install @slice/common
+npm install @alexisbaud/slice-common
 # or
-yarn add @slice/common
+yarn add @alexisbaud/slice-common
 # or
-pnpm add @slice/common
+pnpm add @alexisbaud/slice-common
 ```
 
 ## Contents
@@ -26,11 +26,12 @@ Located in `dist/types/` (after build) and defined in `src/types/`:
 
 -   **`AuthCredentials`**, **`AuthTokens`** (from `auth.ts`): Interfaces for authentication request and response data.
 -   **`UserProfile`** (from `user.ts`): Interface for user profile information.
+-   **`AuthUserRegisteredEvent`**, **`AuthUserDeletedEvent`** (from `auth.ts`): Interfaces for authentication event payloads.
 
 **Example Usage (TypeScript):**
 
 ```typescript
-import { UserProfile, AuthCredentials, AuthTokens } from '@slice/common';
+import { UserProfile, AuthCredentials, AuthTokens, AuthUserRegisteredEvent } from '@alexisbaud/slice-common';
 
 const user: UserProfile = {
   id: 'user-uuid-123',
@@ -46,35 +47,16 @@ const credentials: AuthCredentials = {
   email: 'login@example.com',
   password: 'securePassword123',
 };
-```
 
-### 2. Event Payloads
-
-Located in `dist/events/` (after build) and defined in `src/events/`:
-
--   **`AuthUserRegisteredEvent`** and **`AUTH_USER_REGISTERED_EVENT_NAME`** (from `auth.ts`): Interface and constant for the `auth.user.registered` RabbitMQ event payload and name.
-
-**Example Usage (TypeScript):**
-
-```typescript
-import { AuthUserRegisteredEvent, AUTH_USER_REGISTERED_EVENT_NAME } from '@slice/common';
-
+// Example of an event payload
 const eventPayload: AuthUserRegisteredEvent = {
-  eventId: 'event-uuid-456',
-  timestamp: new Date(),
-  userId: 'user-uuid-123',
+  id: 'user-uuid-123',
   email: 'newuser@example.com',
+  timestamp: new Date().toISOString(),
 };
-
-// Example: Publishing an event (actual implementation will be in your service)
-// rabbitMQChannel.publish(
-//   'user_events_exchange', // Your exchange name
-//   AUTH_USER_REGISTERED_EVENT_NAME,
-//   Buffer.from(JSON.stringify(eventPayload))
-// );
 ```
 
-### 3. Helper Functions
+### 2. Helper Functions
 
 Located in `dist/helpers/` (after build) and defined in `src/helpers/`:
 
@@ -85,14 +67,14 @@ Located in `dist/helpers/` (after build) and defined in `src/helpers/`:
 **Example Usage (TypeScript):**
 
 ```typescript
-import { formatDate, slugify, genUUIDReadable } from '@slice/common';
+import { formatDate, slugify, genUUIDReadable } from '@alexisbaud/slice-common';
 
 console.log(formatDate(new Date())); // e.g., "01/25/2024, 10:30:00" (output depends on locale)
 console.log(slugify('My Awesome Slice Title!')); // "my-awesome-slice-title"
 console.log(genUUIDReadable()); // e.g., "xzy1-abc2-qwe3"
 ```
 
-### 4. ESLint Configuration
+### 3. ESLint Configuration
 
 A base ESLint configuration is provided in `eslint/index.js`. To use it in your microservice:
 
@@ -111,7 +93,7 @@ A base ESLint configuration is provided in `eslint/index.js`. To use it in your 
     module.exports = {
       root: true,
       extends: [
-        require.resolve('@slice/common/eslint'),
+        require.resolve('@alexisbaud/slice-common/eslint'),
         // Add any project-specific ESLint rules or plugins here
       ],
       parserOptions: {
@@ -126,7 +108,7 @@ A base ESLint configuration is provided in `eslint/index.js`. To use it in your 
     };
     ```
 
-### 5. Prettier Configuration
+### 4. Prettier Configuration
 
 A base Prettier configuration is provided in `prettier/index.js`. To use it in your microservice:
 
@@ -146,7 +128,7 @@ A base Prettier configuration is provided in `prettier/index.js`. To use it in y
         // your-service/package.json
         {
           // ...
-          "prettier": "@slice/common/prettier"
+          "prettier": "@alexisbaud/slice-common/prettier"
           // ...
         }
         ```
@@ -156,12 +138,12 @@ A base Prettier configuration is provided in `prettier/index.js`. To use it in y
         ```javascript
         // your-service/.prettierrc.js
         module.exports = {
-          ...require('@slice/common/prettier'),
+          ...require('@alexisbaud/slice-common/prettier'),
           // Add any project-specific Prettier overrides here
         };
         ```
 
-## Development of `@slice/common`
+## Development of `@alexisbaud/slice-common`
 
 ### Build
 

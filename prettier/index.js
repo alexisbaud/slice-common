@@ -1,7 +1,7 @@
 /**
  * Sharable Prettier configuration for Slice microservices.
- * To use, add this to your service's package.json: "prettier": "@slice/common/prettier"
- * Or create a .prettierrc.js file: `module.exports = require('@slice/common/prettier');`
+ * To use, add this to your service's package.json: "prettier": "@alexisbaud/slice-common/prettier"
+ * Or create a .prettierrc.js file: `module.exports = require('@alexisbaud/slice-common/prettier');`
  */
 module.exports = {
   printWidth: 100, // Slightly wider for modern screens

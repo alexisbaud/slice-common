@@ -1,6 +1,6 @@
 /**
  * Sharable ESLint configuration for Slice microservices.
- * To use, extend this in your service's .eslintrc.js: `extends: [require.resolve('@slice/common/eslint')]`
+ * To use, extend this in your service's .eslintrc.js: `extends: [require.resolve('@alexisbaud/slice-common/eslint')]`
  * Make sure to install peer dependencies like eslint, prettier, and typescript plugins in your service.
  */
 module.exports = {
