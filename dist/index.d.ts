@@ -31,6 +31,25 @@ interface AuthUserDeletedEvent {
 }
 
 /**
+ * Represents a user profile.
+ */
+interface UserProfile {
+    userId: string;
+    username: string | null;
+    avatarUrl: string | null;
+    hashtags: string[];
+    createdAt: string;
+    updatedAt: string;
+}
+/**
+ * Payload for the profile_updated event.
+ */
+interface ProfileUpdatedEvent {
+    userId: string;
+    timestamp: string;
+}
+
+/**
  * Formats a Date object into a string using Intl.DateTimeFormat.
  * This is a pure helper function, suitable for server-side or client-side use where Intl is available.
  *
@@ -66,4 +85,4 @@ declare function slugify(text: unknown): string;
  */
 declare function genUUIDReadable(segments?: number, segmentLength?: number): string;
 
-export { type AuthCredentials, type AuthTokens, type AuthUserDeletedEvent, type AuthUserRegisteredEvent, formatDate, genUUIDReadable, slugify };
+export { type AuthCredentials, type AuthTokens, type AuthUserDeletedEvent, type AuthUserRegisteredEvent, type ProfileUpdatedEvent, type UserProfile, formatDate, genUUIDReadable, slugify };
