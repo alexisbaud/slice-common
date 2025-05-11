@@ -2,6 +2,7 @@
 
 // Types
 export * from './types/auth';
+export * from './types/user';
 
 // Helpers
 export * from './helpers/formatDate';
